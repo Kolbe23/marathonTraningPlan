@@ -4,45 +4,54 @@
 #include<string>
 using namespace std;
 void Plan::printPlan(const char& level,const int &goalTime) {
+	if(level == 'b'){
+		trainingLevel = Level::beginner;
+	}
+	else if(level == 'i'){
+		trainingLevel = Level::intermediate;
+	}
+	else{
+		trainingLevel = Level::advanced;
+	}
 	cout << "Week\t Mon\t Tues\t Wed\t Thur\t Fri\t Sat \t Sun\t Total Miles\n";
 	for(int i = 1; i <= 16; ++i){
 		int tues = getTuesMileage(i);
 		int thurs = getThurMiles(i);
 		int sat = getSatMiles(i);
 		int sun = getSunMiles(i);
-		int weeklyTotal;
-		if(level == 'b'){
-			string fri ="Rest";
-			string wed ="Rest";
-			string mon ="Rest";
-			weeklyTotal = tues + thurs + sat + sun;
-			cout << i << "\t\t" << mon << " \t " << tues << "\t\t"
-				<< wed << "\t\t" << thurs << "\t" << fri
-				<< " \t " << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
-		}
-		else if(level == 'i'){
-			int wed = tues;
-			string fri ="Rest";
-			string mon ="Rest";
-			tues +=3;
-			thurs += 3;
-			sun += 4;
-			weeklyTotal = tues + wed + thurs + sat + sun;
-			cout << i << "\t\t" << mon << " \t " << tues << "\t\t"
-				<< wed << "\t\t" << thurs << "\t\t" << fri
-				<< " \t " << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
-		}
-		else if(level == 'a'){
-			int wed = tues;
-			int fri = tues;
-			string mon ="Rest";
-			tues +=3;
-			thurs += 3;
-			sun += 4;
-			weeklyTotal = fri + tues + wed + thurs + sat + sun;
-			cout << i << "\t\t" << mon << "\t\t" << tues << "\t\t"
-				<< wed << "\t\t" << thurs << "\t\t" << fri
-				<< "\t\t" << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
+		int wedInt = 0;
+		int friInt = 0;
+		string fri ="Rest";
+		string wed ="Rest";
+		string mon ="Rest";
+		int weeklyTotal = 0;
+		switch(trainingLevel){
+			case(Level::beginner):
+				weeklyTotal = tues + thurs + sat + sun;
+				cout << i << "\t\t" << mon << " \t " << tues << "\t\t"
+					<< wed << "\t\t" << thurs << "\t" << fri
+					<< " \t " << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
+				break;
+			case(Level::intermediate):
+				wedInt = tues;
+				tues +=3;
+				thurs += 3;
+				sun += 4;
+				weeklyTotal = tues + wedInt + thurs + sat + sun;
+				cout << i << "\t\t" << mon << " \t " << tues << "\t\t"
+					<< wedInt << "\t\t" << thurs << "\t\t" << fri
+					<< " \t " << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
+				break;
+			case(Level::advanced):
+				wedInt = tues;
+				friInt = tues;
+				tues +=3;
+				thurs += 3;
+				sun += 4;
+				weeklyTotal = friInt + tues + wedInt + thurs + sat + sun;
+				cout << i << "\t\t" << mon << "\t\t" << tues << "\t\t"
+					<< wedInt << "\t\t" << thurs << "\t\t" << friInt
+					<< "\t\t" << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
 		}
 	}
 	printPaces(goalTime);

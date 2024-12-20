@@ -6,16 +6,12 @@
 using namespace std;
 class Plan{
 private:
-	char lvl;
-	int week;
-	int mondayMiles;
-	int thurMiles;
-	int tuesdayMiles;
-	string racepace;
-	int wednesdayMiles;
-	int goalPace;
-	int pace;
-	string printPace;
+	enum class Level{
+		beginner,
+		intermediate,
+		advanced,
+	};
+	Level trainingLevel;
 	
 public:
 	void printPlan(const char& level, const int& goalTime);

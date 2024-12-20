@@ -1,9 +1,24 @@
 What is your preferred skill level for your marathon training plan? 
 Please enter one of these three options: beginner, intermediate, or advanced:
-Please enter only intermediate, beginner, or advanced:
-Please enter only intermediate, beginner, or advanced:
-Please enter only intermediate, beginner, or advanced:
-Please enter only intermediate, beginner, or advanced:
-Please enter only intermediate, beginner, or advanced:
 Your goal time must be under 6 hours and 30 minutes.
 What is your goal time? Please enter in h:mm format:
+Week	 Mon	 Tues	 Wed	 Thur	 Fri	 Sat 	 Sun	 Total Miles
+1		Rest 	 7		4		7		Rest 	 5		12		35
+2		Rest 	 7		4		9		Rest 	 5		14		39
+3		Rest 	 7		4		7		Rest 	 3		10		31
+4		Rest 	 7		4		9		Rest 	 6		14		40
+5		Rest 	 7		4		9		Rest 	 6		16		42
+6		Rest 	 7		4		9		Rest 	 6		18		44
+7		Rest 	 7		4		7		Rest 	 4		14		36
+8		Rest 	 7		4		10		Rest 	 8		18		47
+9		Rest 	 7		4		10		Rest 	 8		20		49
+10		Rest 	 7		4		10		Rest 	 8		22		51
+11		Rest 	 7		4		9		Rest 	 6		14		40
+12		Rest 	 8		5		11		Rest 	 10		18		52
+13		Rest 	 8		5		11		Rest 	 10		20		54
+14		Rest 	 8		5		11		Rest 	 10		22		56
+15		Rest 	 7		4		7		Rest 	 3		14		35
+16		Rest 	 6		3		6		Rest 	 2		30		47
+Your race pace is: 6:52 min/mile
+Fast day pace: 6:07 min/mile
+Long run and chill pace: 7:22-8:22 min/mile
