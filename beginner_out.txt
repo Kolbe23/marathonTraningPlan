@@ -1,0 +1,21 @@
+What is your preferred skill level for your marathon training plan? 
+Please enter one of these three options: beginner, intermediate, or advanced:
+Your goal time must be under 6 hours and 30 minutes.
+What is your goal time? Please enter in h:mm format:
+Week	 Mon	 Tues	 Wed	 Thur	 Fri	 Sat 	 Sun	 Total Miles
+1		Rest 	 4		Rest		4	Rest 	 5		8		21
+2		Rest 	 4		Rest		6	Rest 	 5		10		25
+3		Rest 	 4		Rest		4	Rest 	 3		6		17
+4		Rest 	 4		Rest		6	Rest 	 6		10		26
+5		Rest 	 4		Rest		6	Rest 	 6		12		28
+6		Rest 	 4		Rest		6	Rest 	 6		14		30
+7		Rest 	 4		Rest		4	Rest 	 4		10		22
+8		Rest 	 4		Rest		7	Rest 	 8		14		33
+9		Rest 	 4		Rest		7	Rest 	 8		16		35
+10		Rest 	 4		Rest		7	Rest 	 8		18		37
+11		Rest 	 4		Rest		6	Rest 	 6		10		26
+12		Rest 	 5		Rest		8	Rest 	 10		14		37
+13		Rest 	 5		Rest		8	Rest 	 10		16		39
+14		Rest 	 5		Rest		8	Rest 	 10		18		41
+15		Rest 	 4		Rest		4	Rest 	 3		10		21
+16		Rest 	 3		Rest		3	Rest 	 2		26		34

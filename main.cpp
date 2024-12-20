@@ -6,7 +6,7 @@ using namespace std;
 int main(int argc, char** argv) {
 	string skillLevel;
 	char colon;
-	char goalHr;
+	int goalHr;
 	string minutes;
 	int hours;
 	int goalTime;
@@ -21,11 +21,7 @@ int main(int argc, char** argv) {
 	cout << "Your goal time must be under 6 hours and 30 minutes.\n";
 	cout << "What is your goal time? Please enter in h:mm format:\n";
 	cin >> goalHr >> colon >> minutes;
-	goalTime = (goalHr * 60 + stoi(minutes));
+	goalTime = ((goalHr * 60) + stoi(minutes));
+	// cout << goalHr << " " << minutes << " " << goalTime << endl; //debug
 	trainingPlan.printPlan(skillLevel[0],goalTime);
-	// cout << "tues \t thurs \t sat \t sun \n";
-	// for(int i = 1; i <= 16; ++i){
-	// 	cout << trainingPlan.getTuesMileage(i) << "\t" << trainingPlan.getThurMiles(i) << "\t" << 
-	// 	trainingPlan.getSatMiles(i) << "\t" << trainingPlan.getSunMiles(i) <<  "\n";
-	// }
 }

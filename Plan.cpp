@@ -26,14 +26,26 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 			string mon ="Rest";
 			tues +=3;
 			thurs += 3;
-			sat += 3;
 			sun += 4;
 			weeklyTotal = tues + wed + thurs + sat + sun;
 			cout << i << "\t\t" << mon << " \t " << tues << "\t\t"
 				<< wed << "\t\t" << thurs << "\t\t" << fri
 				<< " \t " << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
 		}
+		else if(level == 'a'){
+			int wed = tues;
+			int fri = tues;
+			string mon ="Rest";
+			tues +=3;
+			thurs += 3;
+			sun += 4;
+			weeklyTotal = fri + tues + wed + thurs + sat + sun;
+			cout << i << "\t\t" << mon << "\t\t" << tues << "\t\t"
+				<< wed << "\t\t" << thurs << "\t\t" << fri
+				<< "\t\t" << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
+		}
 	}
+	printPaces(goalTime);
 }
 int Plan::getTuesMileage(int& week) {
 	int mileage;
@@ -46,12 +58,12 @@ int Plan::getTuesMileage(int& week) {
 	else if (week == 15) {
 		mileage = 4;
 	}
-	else {
+	else { //only occur for last week (race week!!)
 		mileage = 3;
 	}
 	return mileage;
 }
-void Plan::paces(){}
+
 int Plan::getThurMiles(int& week) {
 	int mileage = 4;
 	int weekGrouping = floor(week/4);
@@ -64,7 +76,7 @@ int Plan::getThurMiles(int& week) {
 		}
 	}
 	else{
-		if(week == 2 ||weekGrouping == 1){
+		if(week == 2 || weekGrouping == 1){
 			mileage += 2;
 		}
 		else if(weekGrouping == 2){
@@ -156,5 +168,29 @@ int Plan::getSunMiles(int& week){
 		mileage = 26.2;  //race day!!
 	}
 	return mileage;
+}
+void Plan::printPaces(const int& goal){
+	double minPerMile = goal / 26.2;
+	//race pace
+	int racePaceMin = static_cast<int>(minPerMile);
+	int racePaceSec =  static_cast<int>((minPerMile-racePaceMin) * 60);
+	string racePace = to_string(racePaceMin) + ":" + (racePaceSec < 10 ? "0" : "") + to_string(racePaceSec);
+	cout << "Your race pace is: " << racePace <<  " min/mile\n";
+	//tempo pace
+	double fastDay = minPerMile - .75;
+	int fastDayMin = static_cast<int>(fastDay);
+	int fastDaySec =  static_cast<int>((fastDay-fastDayMin) * 60);
+	string fastPace = to_string(fastDayMin) + ":" + (fastDaySec < 10 ? "0" : "") + to_string(fastDaySec);
+	cout << "Fast day pace: " << fastPace << " min/mile\n";
+	//long run pace
+	double longRunFloor = minPerMile + .5;
+	double longRunCeiling = minPerMile + 1.5;
+	int lrfMin = static_cast<int>(longRunFloor);
+	int lrcMin = static_cast<int>(longRunCeiling);
+	int lrfSec =  static_cast<int>((longRunFloor-lrfMin) * 60);
+	int lrcSec =  static_cast<int>((longRunCeiling-lrcMin) * 60);
+	string longRunFloorPace = to_string(lrfMin) + ":" + (lrfSec < 10 ? "0" : "") + to_string(lrfSec);
+	string longRunCeilingPace = to_string(lrcMin) + ":" + (lrcSec < 10 ? "0" : "") + to_string(lrcSec);
+	cout << "Long run and chill pace: " << longRunFloorPace << "-" << longRunCeilingPace << " min/mile\n"; 
 }
 

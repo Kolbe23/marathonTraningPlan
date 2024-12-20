@@ -1,0 +1,9 @@
+What is your preferred skill level for your marathon training plan? 
+Please enter one of these three options: beginner, intermediate, or advanced:
+Please enter only intermediate, beginner, or advanced:
+Please enter only intermediate, beginner, or advanced:
+Please enter only intermediate, beginner, or advanced:
+Please enter only intermediate, beginner, or advanced:
+Please enter only intermediate, beginner, or advanced:
+Your goal time must be under 6 hours and 30 minutes.
+What is your goal time? Please enter in h:mm format:
