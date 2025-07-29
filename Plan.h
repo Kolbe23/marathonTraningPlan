@@ -2,7 +2,6 @@
 #include<iostream>
 #include<cmath>
 #include<string>
-//TODO enum class for beginner, intermediate, advanced
 using namespace std;
 class Plan{
 private:

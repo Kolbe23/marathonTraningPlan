@@ -20,8 +20,12 @@ int main(int argc, char** argv) {
 	}
 	cout << "Your goal time must be under 6 hours and 30 minutes.\n";
 	cout << "What is your goal time? Please enter in h:mm format:\n";
+	cout << endl;
+	cout << endl;
 	cin >> goalHr >> colon >> minutes;
 	goalTime = ((goalHr * 60) + stoi(minutes));
+	cout << "Your goal time is to be under: " << goalHr << colon << minutes << endl;
+	cout << endl;
 	// cout << goalHr << " " << minutes << " " << goalTime << endl; //debug
 	trainingPlan.printPlan(skillLevel[0],goalTime);
 }

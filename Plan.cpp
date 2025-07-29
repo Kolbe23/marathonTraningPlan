@@ -34,9 +34,11 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 				break;
 			case(Level::intermediate):
 				wedInt = tues;
-				tues +=3;
-				thurs += 3;
-				sun += 4;
+				if(i != 16){
+					tues +=3;
+					thurs += 3;
+					sun += 4;
+				}
 				weeklyTotal = tues + wedInt + thurs + sat + sun;
 				cout << i << "\t\t" << mon << " \t " << tues << "\t\t"
 					<< wedInt << "\t\t" << thurs << "\t\t" << fri
@@ -44,10 +46,12 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 				break;
 			case(Level::advanced):
 				wedInt = tues;
-				friInt = tues;
-				tues +=3;
-				thurs += 3;
-				sun += 4;
+				if(i != 16){
+					friInt = tues;
+					tues +=3;
+					thurs += 3;
+					sun += 4;
+				}
 				weeklyTotal = friInt + tues + wedInt + thurs + sat + sun;
 				cout << i << "\t\t" << mon << "\t\t" << tues << "\t\t"
 					<< wedInt << "\t\t" << thurs << "\t\t" << friInt
