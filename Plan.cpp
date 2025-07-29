@@ -1,6 +1,8 @@
 #include"Plan.h"
 #include<iostream>
 #include<cmath>
+#include<vector>
+#include<map>
 #include<string>
 using namespace std;
 void Plan::printPlan(const char& level,const int &goalTime) {
@@ -14,7 +16,15 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 		trainingLevel = Level::advanced;
 	}
 	cout << "Week\t Mon\t Tues\t Wed\t Thur\t Fri\t Sat \t Sun\t Total Miles\n";
+
+	//create output vector:
+	vector<vector<pair<string,string>>> output;
+	
+
 	for(int i = 1; i <= 16; ++i){
+		//create map for each week
+		vector<pair<string, string>> weekData;
+
 		int tues = getTuesMileage(i);
 		int thurs = getThurMiles(i);
 		int sat = getSatMiles(i);
@@ -28,10 +38,20 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 		switch(trainingLevel){
 			case(Level::beginner):
 				weeklyTotal = tues + thurs + sat + sun;
-				cout << i << "\t\t" << mon << " \t " << tues << "\t\t"
-					<< wed << "\t\t" << thurs << "\t" << fri
-					<< " \t " << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
+
+				//create map of data to send to python script to make into excel spreadsheet
+				weekData.emplace_back("Week",to_string(i));
+				weekData.emplace_back("Monday",mon);
+				weekData.emplace_back("Tuesday",to_string(tues));
+				weekData.emplace_back("Wednesday",wed);
+				weekData.emplace_back("Thursday",to_string(thurs));
+				weekData.emplace_back("Friday",fri);
+				weekData.emplace_back("Saturday",to_string(sat));
+				weekData.emplace_back("Sunday",to_string(sun));
+				weekData.emplace_back("Total miles",to_string(weeklyTotal));
+				output.push_back(weekData);
 				break;
+
 			case(Level::intermediate):
 				wedInt = tues;
 				if(i != 16){
@@ -40,9 +60,20 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 					sun += 4;
 				}
 				weeklyTotal = tues + wedInt + thurs + sat + sun;
-				cout << i << "\t\t" << mon << " \t " << tues << "\t\t"
-					<< wedInt << "\t\t" << thurs << "\t\t" << fri
-					<< " \t " << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
+
+				//create map of data to send to python script to make into excel spreadsheet
+				
+				weekData.emplace_back("Week",to_string(i));
+				weekData.emplace_back("Monday",mon);
+				weekData.emplace_back("Tuesday",to_string(tues));
+				weekData.emplace_back("Wednesday",to_string(wedInt));
+				weekData.emplace_back("Thursday",to_string(thurs));
+				weekData.emplace_back("Friday",fri);
+				weekData.emplace_back("Saturday",to_string(sat));
+				weekData.emplace_back("Sunday",to_string(sun));
+				weekData.emplace_back("Total miles",to_string(weeklyTotal));
+				output.push_back(weekData);
+
 				break;
 			case(Level::advanced):
 				wedInt = tues;
@@ -53,10 +84,30 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 					sun += 4;
 				}
 				weeklyTotal = friInt + tues + wedInt + thurs + sat + sun;
-				cout << i << "\t\t" << mon << "\t\t" << tues << "\t\t"
-					<< wedInt << "\t\t" << thurs << "\t\t" << friInt
-					<< "\t\t" << sat << "\t\t" << sun   << "\t\t" << weeklyTotal << "\n";
+
+				//create map of data to send to python script to make into excel spreadsheet
+
+				weekData.emplace_back("Week",to_string(i));
+				weekData.emplace_back("Monday",mon);
+				weekData.emplace_back("Tuesday",to_string(tues));
+				weekData.emplace_back("Wednesday",to_string(wedInt));
+				weekData.emplace_back("Thursday",to_string(thurs));
+				weekData.emplace_back("Friday",to_string(friInt));
+				weekData.emplace_back("Saturday",to_string(sat));
+				weekData.emplace_back("Sunday",to_string(sun));
+				weekData.emplace_back("Total miles",to_string(weeklyTotal));
+				output.push_back(weekData);
+
+				
 		}
+	}
+
+	for (const auto& week : output) {
+		cout << "{ ";
+		for (const auto& [key, value] : week) {
+			cout << "\"" << key << "\": \"" << value << "\", ";
+		}
+		cout << "}\n";
 	}
 	printPaces(goalTime);
 }

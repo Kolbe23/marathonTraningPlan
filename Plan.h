@@ -1,6 +1,8 @@
 //#pragma once
 #include<iostream>
 #include<cmath>
+#include<vector>
+#include<map>
 #include<string>
 using namespace std;
 class Plan{
