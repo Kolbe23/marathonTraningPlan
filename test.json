@@ -1,0 +1,189 @@
+What is your preferred skill level for your marathon training plan? 
+Please enter one of these three options: beginner, intermediate, or advanced:
+Your goal time must be under 6 hours and 30 minutes.
+What is your goal time? Please enter in h:mm format:
+
+
+Your goal time is to be under: 4:00
+
+[
+  {
+    "Week": "1",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "4",
+    "Friday": "Rest",
+    "Saturday": "5",
+    "Sunday": "8",
+    "Total miles": "21"
+  },
+  {
+    "Week": "2",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "6",
+    "Friday": "Rest",
+    "Saturday": "5",
+    "Sunday": "10",
+    "Total miles": "25"
+  },
+  {
+    "Week": "3",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "4",
+    "Friday": "Rest",
+    "Saturday": "3",
+    "Sunday": "6",
+    "Total miles": "17"
+  },
+  {
+    "Week": "4",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "6",
+    "Friday": "Rest",
+    "Saturday": "6",
+    "Sunday": "10",
+    "Total miles": "26"
+  },
+  {
+    "Week": "5",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "6",
+    "Friday": "Rest",
+    "Saturday": "6",
+    "Sunday": "12",
+    "Total miles": "28"
+  },
+  {
+    "Week": "6",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "6",
+    "Friday": "Rest",
+    "Saturday": "6",
+    "Sunday": "14",
+    "Total miles": "30"
+  },
+  {
+    "Week": "7",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "4",
+    "Friday": "Rest",
+    "Saturday": "4",
+    "Sunday": "10",
+    "Total miles": "22"
+  },
+  {
+    "Week": "8",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "7",
+    "Friday": "Rest",
+    "Saturday": "8",
+    "Sunday": "14",
+    "Total miles": "33"
+  },
+  {
+    "Week": "9",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "7",
+    "Friday": "Rest",
+    "Saturday": "8",
+    "Sunday": "16",
+    "Total miles": "35"
+  },
+  {
+    "Week": "10",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "7",
+    "Friday": "Rest",
+    "Saturday": "8",
+    "Sunday": "18",
+    "Total miles": "37"
+  },
+  {
+    "Week": "11",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "6",
+    "Friday": "Rest",
+    "Saturday": "6",
+    "Sunday": "10",
+    "Total miles": "26"
+  },
+  {
+    "Week": "12",
+    "Monday": "Rest",
+    "Tuesday": "5",
+    "Wednesday": "Rest",
+    "Thursday": "8",
+    "Friday": "Rest",
+    "Saturday": "10",
+    "Sunday": "14",
+    "Total miles": "37"
+  },
+  {
+    "Week": "13",
+    "Monday": "Rest",
+    "Tuesday": "5",
+    "Wednesday": "Rest",
+    "Thursday": "8",
+    "Friday": "Rest",
+    "Saturday": "10",
+    "Sunday": "16",
+    "Total miles": "39"
+  },
+  {
+    "Week": "14",
+    "Monday": "Rest",
+    "Tuesday": "5",
+    "Wednesday": "Rest",
+    "Thursday": "8",
+    "Friday": "Rest",
+    "Saturday": "10",
+    "Sunday": "18",
+    "Total miles": "41"
+  },
+  {
+    "Week": "15",
+    "Monday": "Rest",
+    "Tuesday": "4",
+    "Wednesday": "Rest",
+    "Thursday": "4",
+    "Friday": "Rest",
+    "Saturday": "3",
+    "Sunday": "10",
+    "Total miles": "21"
+  },
+  {
+    "Week": "16",
+    "Monday": "Rest",
+    "Tuesday": "3",
+    "Wednesday": "Rest",
+    "Thursday": "3",
+    "Friday": "Rest",
+    "Saturday": "2",
+    "Sunday": "26",
+    "Total miles": "34"
+  }
+]
+Your race pace is: 9:09 min/mile
+Fast day pace: 8:24 min/mile
+Long run and chill pace: 9:39-10:39 min/mile

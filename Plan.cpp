@@ -1,5 +1,6 @@
 #include"Plan.h"
 #include<iostream>
+#include<fstream>
 #include<cmath>
 #include<vector>
 #include<map>
@@ -117,6 +118,25 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 		cout << "\n";
 	}
 	cout << "]\n";
+
+	//saves json file of plan to be turned into excel spreadsheet
+	ofstream jsonOut("plan.json");
+	jsonOut << "[\n";
+	for (size_t i = 0; i < output.size(); ++i) {
+		const auto& week = output[i];
+		jsonOut << "  {\n";
+		for (size_t j = 0; j < week.size(); ++j) {
+			const auto& [key, value] = week[j];
+			jsonOut << "    \"" << key << "\": \"" << value << "\"";
+			if (j < week.size() - 1) jsonOut << ",";
+			jsonOut << "\n";
+		}
+		jsonOut << "  }";
+		if (i < output.size() - 1) jsonOut << ",";
+		jsonOut << "\n";
+	}
+	jsonOut << "]\n";
+	jsonOut.close();
 
 	printPaces(goalTime);
 }
