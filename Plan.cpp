@@ -17,6 +17,7 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 		trainingLevel = Level::advanced;
 	}
 
+	map<string, string> paces = printPaces(goalTime);
 	//create output vector:
 	vector<vector<pair<string,string>>> output;
 	
@@ -42,12 +43,19 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 				//create map of data to send to python script to make into excel spreadsheet
 				weekData.emplace_back("Week",to_string(i));
 				weekData.emplace_back("Monday",mon);
-				weekData.emplace_back("Tuesday",to_string(tues));
+				weekData.emplace_back("Tuesday",to_string(tues) + " @ " + paces["tues"]);
 				weekData.emplace_back("Wednesday",wed);
-				weekData.emplace_back("Thursday",to_string(thurs));
+				weekData.emplace_back("Thursday",to_string(thurs)+ " @ " + paces["thurs"]);
 				weekData.emplace_back("Friday",fri);
-				weekData.emplace_back("Saturday",to_string(sat));
-				weekData.emplace_back("Sunday",to_string(sun));
+				weekData.emplace_back("Saturday",to_string(sat)+ " @ " + paces["sat"]);
+				if(i != 16){
+					weekData.emplace_back("Sunday",to_string(sun) + " @ " + paces["sun"]);
+
+				}
+				else{
+					weekData.emplace_back("Sunday",to_string(sun) + " @ " + paces["race"]);
+				}
+
 				weekData.emplace_back("Total miles",to_string(weeklyTotal));
 				output.push_back(weekData);
 				break;
@@ -65,12 +73,19 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 				
 				weekData.emplace_back("Week",to_string(i));
 				weekData.emplace_back("Monday",mon);
-				weekData.emplace_back("Tuesday",to_string(tues));
-				weekData.emplace_back("Wednesday",to_string(wedInt));
-				weekData.emplace_back("Thursday",to_string(thurs));
+				weekData.emplace_back("Tuesday",to_string(tues) + " @ " + paces["tues"]);
+				weekData.emplace_back("Wednesday",to_string(wedInt) + " @ " + paces["wed"]);
+				weekData.emplace_back("Thursday",to_string(thurs) + " @ " + paces["thurs"] );
 				weekData.emplace_back("Friday",fri);
-				weekData.emplace_back("Saturday",to_string(sat));
-				weekData.emplace_back("Sunday",to_string(sun));
+				weekData.emplace_back("Saturday",to_string(sat) + " @ " + paces["sat"]);
+				if(i != 16){
+					weekData.emplace_back("Sunday",to_string(sun) + " @ " + paces["sun"]);
+
+				}
+				else{
+					weekData.emplace_back("Sunday",to_string(sun) + " @ " + paces["race"]);
+				}
+				
 				weekData.emplace_back("Total miles",to_string(weeklyTotal));
 				output.push_back(weekData);
 
@@ -89,12 +104,18 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 
 				weekData.emplace_back("Week",to_string(i));
 				weekData.emplace_back("Monday",mon);
-				weekData.emplace_back("Tuesday",to_string(tues));
-				weekData.emplace_back("Wednesday",to_string(wedInt));
-				weekData.emplace_back("Thursday",to_string(thurs));
-				weekData.emplace_back("Friday",to_string(friInt));
-				weekData.emplace_back("Saturday",to_string(sat));
-				weekData.emplace_back("Sunday",to_string(sun));
+				weekData.emplace_back("Tuesday",to_string(tues) + " @ " + paces["tues"]);
+				weekData.emplace_back("Wednesday",to_string(wedInt) + " @ " + paces["wed"]);
+				weekData.emplace_back("Thursday",to_string(thurs)  + " @ " + paces["thurs"]);
+				weekData.emplace_back("Friday",to_string(friInt) + " @ " + paces["fri"]);
+				weekData.emplace_back("Saturday",to_string(sat) + " @ " + paces["sat"]);
+				if(i != 16){
+					weekData.emplace_back("Sunday",to_string(sun) + " @ " + paces["sun"]);
+
+				}
+				else{
+					weekData.emplace_back("Sunday",to_string(sun) + " @ " + paces["race"]);
+				}
 				weekData.emplace_back("Total miles",to_string(weeklyTotal));
 				output.push_back(weekData);
 
@@ -138,8 +159,8 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 	jsonOut << "]\n";
 	jsonOut.close();
 
-	printPaces(goalTime);
 }
+
 int Plan::getTuesMileage(int& week) {
 	int mileage;
 	if (week < 12) {
@@ -184,6 +205,7 @@ int Plan::getThurMiles(int& week) {
 	}
 	return mileage;
 }
+
 int Plan::getSatMiles(int& week){
 	int mileage;
 	bool lightWeek = week % 4 == 3;
@@ -217,6 +239,7 @@ int Plan::getSatMiles(int& week){
 	}
 	return mileage;
 }
+
 int Plan::getSunMiles(int& week){
 	int mileage;
 	int weekGroup = floor(week/4);
@@ -262,19 +285,21 @@ int Plan::getSunMiles(int& week){
 	}
 	return mileage;
 }
-void Plan::printPaces(const int& goal){
+
+map<string, string> Plan::printPaces(const int& goal){
+	map<string,string> dayPaceMap;
 	double minPerMile = goal / 26.2;
 	//race pace
 	int racePaceMin = static_cast<int>(minPerMile);
 	int racePaceSec =  static_cast<int>((minPerMile-racePaceMin) * 60);
-	string racePace = to_string(racePaceMin) + ":" + (racePaceSec < 10 ? "0" : "") + to_string(racePaceSec);
-	cout << "Your race pace is: " << racePace <<  " min/mile\n";
+	string racePace = to_string(racePaceMin) + ":" + (racePaceSec < 10 ? "0" : "") + to_string(racePaceSec) + " min/mile";
+	cout << "Your race pace is: " << racePace <<  "\n";
 	//tempo pace
 	double fastDay = minPerMile - .75;
 	int fastDayMin = static_cast<int>(fastDay);
 	int fastDaySec =  static_cast<int>((fastDay-fastDayMin) * 60);
-	string fastPace = to_string(fastDayMin) + ":" + (fastDaySec < 10 ? "0" : "") + to_string(fastDaySec);
-	cout << "Fast day pace: " << fastPace << " min/mile\n";
+	string fastPace = to_string(fastDayMin) + ":" + (fastDaySec < 10 ? "0" : "") + to_string(fastDaySec) + " min/mile";
+	cout << "Fast day pace: " << fastPace << "\n";
 	//long run pace
 	double longRunFloor = minPerMile + .5;
 	double longRunCeiling = minPerMile + 1.5;
@@ -285,5 +310,18 @@ void Plan::printPaces(const int& goal){
 	string longRunFloorPace = to_string(lrfMin) + ":" + (lrfSec < 10 ? "0" : "") + to_string(lrfSec);
 	string longRunCeilingPace = to_string(lrcMin) + ":" + (lrcSec < 10 ? "0" : "") + to_string(lrcSec);
 	cout << "Long run and chill pace: " << longRunFloorPace << "-" << longRunCeilingPace << " min/mile\n"; 
+	string longRunPace =  longRunFloorPace + "-" + longRunCeilingPace + " min/mile";
+
+	//create mappings to add to output for each day with a pace
+	dayPaceMap["mon"] = longRunPace;
+	dayPaceMap["tues"] = fastPace;
+	dayPaceMap["wed"] = longRunPace;
+	dayPaceMap["thurs"] = racePace;
+	dayPaceMap["fri"] = longRunPace;
+	dayPaceMap["sat"] = racePace;
+	dayPaceMap["sun"] = longRunPace;
+	dayPaceMap["race"] = racePace;
+
+	return dayPaceMap;
 }
 

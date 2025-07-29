@@ -1,5 +1,6 @@
 //#pragma once
 #include<iostream>
+#include<fstream>
 #include<cmath>
 #include<vector>
 #include<map>
@@ -20,6 +21,6 @@ public:
 	int getThurMiles(int& week);
 	int getSatMiles(int& week);
 	int getSunMiles(int& week);
-	void printPaces(const int& goal);
+	map<string, string> printPaces(const int& goal);
 };
 
