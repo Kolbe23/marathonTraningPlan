@@ -15,7 +15,6 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 	else{
 		trainingLevel = Level::advanced;
 	}
-	cout << "Week\t Mon\t Tues\t Wed\t Thur\t Fri\t Sat \t Sun\t Total Miles\n";
 
 	//create output vector:
 	vector<vector<pair<string,string>>> output;
@@ -102,13 +101,23 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 		}
 	}
 
-	for (const auto& week : output) {
-		cout << "{ ";
-		for (const auto& [key, value] : week) {
-			cout << "\"" << key << "\": \"" << value << "\", ";
+	//prints our data structure in clean json format
+	cout << "[\n";
+	for (size_t i = 0; i < output.size(); ++i) {
+		const auto& week = output[i];
+		cout << "  {\n";
+		for (size_t j = 0; j < week.size(); ++j) {
+			const auto& [key, value] = week[j];
+			cout << "    \"" << key << "\": \"" << value << "\"";
+			if (j < week.size() - 1) cout << ",";
+			cout << "\n";
 		}
-		cout << "}\n";
+		cout << "  }";
+		if (i < output.size() - 1) cout << ",";
+		cout << "\n";
 	}
+	cout << "]\n";
+
 	printPaces(goalTime);
 }
 int Plan::getTuesMileage(int& week) {
