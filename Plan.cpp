@@ -124,7 +124,7 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 	}
 
 	//prints our data structure in clean json format
-	cout << "[\n";
+	/*cout << "[\n";
 	for (size_t i = 0; i < output.size(); ++i) {
 		const auto& week = output[i];
 		cout << "  {\n";
@@ -138,7 +138,7 @@ void Plan::printPlan(const char& level,const int &goalTime) {
 		if (i < output.size() - 1) cout << ",";
 		cout << "\n";
 	}
-	cout << "]\n";
+	cout << "]\n";*/
 
 	//saves json file of plan to be turned into excel spreadsheet
 	ofstream jsonOut("plan.json");

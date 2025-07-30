@@ -15,21 +15,31 @@ int main(int argc, char** argv) {
     string excelOutputFile = argv[1];
 
     // Collect user input and generate plan.json
-    string skillLevel;
+    int skillLevel;
+	char skillLevelChar;
     char colon;
     int goalHr;
     string minutes;
     int goalTime;
 
     Plan trainingPlan;
-
-    cout << "What is your preferred skill level for your marathon training plan? \n"
-         << "Please enter one of these three options: beginner, intermediate, or advanced:\n";
-    cin >> skillLevel;
-
-    while (skillLevel[0] != 'i' && skillLevel[0] != 'b' && skillLevel[0] != 'a') {
-        cout << "Please enter only intermediate, beginner, or advanced:\n";
-        cin >> skillLevel;
+	//changed to ask user for how many days they'd like to run rather than a skill level
+    cout << "How many days per week would you like to run? \n"
+		<< "Please enter one of these three options: 4, 5, or 6\n";
+	cin >> skillLevel;
+	while (skillLevel != 4 && skillLevel != 5  && skillLevel != 6) {
+		cout << "Please enter only 4, 5, or 6:\n";
+		cin >> skillLevel;
+	}
+	//create character to correspond to requested days of training to keep compatible with earlier implementation
+    if(skillLevel == 4){
+        skillLevelChar = 'b';
+    }
+    else if(skillLevel == 5){
+        skillLevelChar = 'i';
+    }
+    else{
+        skillLevelChar = 'a';
     }
 
     cout << "Your goal time must be under 6 hours and 30 minutes.\n";
@@ -40,7 +50,7 @@ int main(int argc, char** argv) {
 
     cout << "Your goal time is to be under: " << goalHr << colon << minutes << endl;
 
-    trainingPlan.printPlan(skillLevel[0], goalTime);  // generates plan.json
+    trainingPlan.printPlan(skillLevelChar, goalTime);  // generates plan.json
 
     // Call Python script to convert plan.json → desired output
     string command = "python3 excel_writer.py plan.json " + excelOutputFile;
